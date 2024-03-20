@@ -116,9 +116,6 @@ class BrowserView:
             Gdk.Screen.get_default(), style_provider, gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
         )
 
-        scrolled_window = gtk.ScrolledWindow()
-        self.window.add(scrolled_window)
-
         self.window.connect('delete-event', self.close_window)
 
         self.window.connect('window-state-event', self.on_window_state_change)
@@ -198,7 +195,7 @@ class BrowserView:
             webkit_settings.enable_html5_local_storage = False
 
         self.webview.set_opacity(0.0)
-        scrolled_window.add(self.webview)
+        window.add(self.webview)
 
         if window.real_url is not None:
             self.webview.load_uri(window.real_url)
